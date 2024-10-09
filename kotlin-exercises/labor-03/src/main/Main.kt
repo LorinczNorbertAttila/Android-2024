@@ -1,9 +1,14 @@
 package main
 
-fun main(args: Array<String>) {
-    println("Hello World!")
+fun main() {
+    val itemRepository = ItemRepository
+    val itemService = ItemService(itemRepository)
+    val itemController = ItemController(itemService)
+    itemRepository.loadItemsFromFile("src/resources/questions.txt")
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+    println("Welcome to the Kotlin Quiz!")
+    print("How many questions would you like to answer? ")
+    val numberOfQuestions = readlnOrNull()?.toIntOrNull() ?: 5
+
+    itemController.quiz(numberOfQuestions)
 }

@@ -1,0 +1,65 @@
+What is the extension of Kotlin files?
+.kt
+.java
+.kotlin
+.class
+0
+
+Who developed Kotlin?
+Google
+JetBrains
+Apache
+Microsoft
+1
+
+Which is the entry point of a Kotlin program?
+main()
+start()
+run()
+execute()
+0
+
+Is Kotlin statically typed?
+Yes
+No
+0
+
+Which keyword is used to define a function in Kotlin?
+def
+func
+fun
+fn
+2
+
+What is the correct way to declare a variable in Kotlin?
+var name = "Kotlin"
+string name = "Kotlin"
+val name = Kotlin
+string name: Kotlin
+0
+
+Kotlin is officially supported for Android development by Google.
+True
+False
+0
+
+How do you define a nullable variable in Kotlin?
+var name: String
+var name: String?
+var? name = "Kotlin"
+name = null
+1
+
+Which function allows you to perform initialization lazily in Kotlin?
+init
+lazy
+lateinit
+by
+1
+
+Which Kotlin feature allows a function to be treated as an expression?
+Fun Expression
+Function as Expression
+Lambda
+Single Expression Functions
+3
