@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">RecipesApp</string>
     <string name="button">Button</string>
+    <string name="background">Background</string>
+    <string name="welcome">Welcome!</string>
+    <string name="whisked">Whisked</string>
 </resources>
