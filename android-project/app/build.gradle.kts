@@ -62,4 +62,6 @@ dependencies {
 
     // Testing Navigation
     androidTestImplementation("androidx.navigation:navigation-testing:$navVersion")
+
+    implementation ("com.google.code.gson:gson:2.8.9")
 }

@@ -1,4 +1,4 @@
-package ui.home
+package com.tasty.recipesapp.ui.profile
 
 import android.content.ContentValues.TAG
 import android.os.Bundle
@@ -9,11 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.tasty.recipesapp.R
 
-class HomeFragment : Fragment() {
+class ProfileFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(TAG, "onCreate: HomeFragment created.")
+        Log.d(TAG, "onCreate: ProfileFragment created.")
     }
 
     override fun onCreateView(
@@ -21,6 +21,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 }

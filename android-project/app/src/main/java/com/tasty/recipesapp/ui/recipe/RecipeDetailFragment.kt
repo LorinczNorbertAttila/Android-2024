@@ -1,4 +1,4 @@
-package ui.recipe
+package com.tasty.recipesapp.ui.recipe
 
 import android.content.ContentValues.TAG
 import android.os.Bundle
@@ -9,12 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.tasty.recipesapp.R
 
-
-class RecipesFragment : Fragment() {
+class RecipeDetailFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(TAG, "onCreate: RecipeFragment created.")
+        Log.d(TAG, "onCreate: RecipeDetailFragment created.")
     }
 
     override fun onCreateView(
@@ -22,7 +21,6 @@ class RecipesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recipes, container, false)
+        return inflater.inflate(R.layout.fragment_recipe_detail, container, false)
     }
-
 }

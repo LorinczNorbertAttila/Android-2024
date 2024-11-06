@@ -1,12 +1,12 @@
-package com.tasty.recipesapp
+package com.tasty.recipesapp.activites
 
 import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import androidx.navigation.findNavController
 import com.google.android.material.navigation.NavigationBarView
+import com.tasty.recipesapp.R
 import com.tasty.recipesapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

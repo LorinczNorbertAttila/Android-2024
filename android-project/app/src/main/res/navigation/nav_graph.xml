@@ -7,17 +7,17 @@
 
     <activity
             android:id="@+id/splashActivity"
-            android:name="com.tasty.recipesapp.SplashActivity"
+            android:name="com.tasty.recipesapp.activites.SplashActivity"
             android:label="activity_splash"
             tools:layout="@layout/activity_splash" />
     <activity
             android:id="@+id/mainActivity"
-            android:name="com.tasty.recipesapp.MainActivity"
+            android:name="com.tasty.recipesapp.activites.MainActivity"
             android:label="activity_main"
             tools:layout="@layout/activity_main" />
     <fragment
             android:id="@+id/recipesFragment"
-            android:name="ui.recipe.RecipesFragment"
+            android:name="com.tasty.recipesapp.ui.recipe.RecipesFragment"
             android:label="fragment_recipes"
             tools:layout="@layout/fragment_recipes" >
         <action
@@ -26,17 +26,17 @@
     </fragment>
     <fragment
             android:id="@+id/recipeDetailFragment"
-            android:name="ui.recipe.RecipeDetailFragment"
+            android:name="com.tasty.recipesapp.ui.recipe.RecipeDetailFragment"
             android:label="fragment_recipe_detail"
             tools:layout="@layout/fragment_recipe_detail" />
     <fragment
             android:id="@+id/profileFragment"
-            android:name="ui.profile.ProfileFragment"
+            android:name="com.tasty.recipesapp.ui.profile.ProfileFragment"
             android:label="fragment_profile"
             tools:layout="@layout/fragment_profile" />
     <fragment
             android:id="@+id/homeFragment"
-            android:name="ui.home.HomeFragment"
+            android:name="com.tasty.recipesapp.ui.home.HomeFragment"
             android:label="fragment_home"
             tools:layout="@layout/fragment_home" />
 </navigation>
