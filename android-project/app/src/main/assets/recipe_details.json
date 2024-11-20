@@ -1,6 +1,4 @@
-// 20241028214238
-// https://moodle.ms.sapientia.ro/pluginfile.php/27364/mod_resource/content/1/recipe_details.json
-
+[
 {
   "recipeID": 1,
   "name": "One-Pot Lemon Garlic Shrimp Pasta",
@@ -116,3 +114,4 @@
     "fiber": 2
   }
 }
+]

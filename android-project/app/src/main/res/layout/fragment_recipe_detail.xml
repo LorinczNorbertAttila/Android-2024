@@ -2,12 +2,56 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".ui.recipe.RecipeDetailFragment">
 
-    <TextView
+    <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/hello_recipe_detail_fragment" />
+            tools:ignore="ScrollViewCount,UselessParent">
+
+        <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:ignore="UselessLeaf">
+
+        <ImageView
+                android:id="@+id/recipeDetailImageView"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:contentDescription="RecipeImage"
+                android:scaleType="centerCrop"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:src="@drawable/ic_launcher_foreground"
+                tools:ignore="HardcodedText" />
+
+        <TextView
+                android:id="@+id/recipeDetailTitleView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/recipeImageView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@color/green"/>
+
+        <TextView
+                android:id="@+id/recipeDetailDescriptionView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/recipeTitleView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </TableLayout>
+    </ScrollView>
 
 </FrameLayout>
