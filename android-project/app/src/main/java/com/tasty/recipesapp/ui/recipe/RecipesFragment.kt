@@ -13,8 +13,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tasty.recipesapp.R
 import com.tasty.recipesapp.databinding.FragmentRecipesBinding
+import com.tasty.recipesapp.models.RecipeDatabase
 import com.tasty.recipesapp.models.RecipeModel
+import com.tasty.recipesapp.models.RecipeRepository
 import com.tasty.recipesapp.ui.recipe.adapter.RecipesListAdapter
+import com.tasty.recipesapp.ui.recipe.factory.RecipeListViewModelFactory
 import com.tasty.recipesapp.ui.recipe.viewmodel.RecipeListViewModel
 
 
@@ -33,8 +36,11 @@ class RecipesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(this)[RecipeListViewModel::class.java]
         binding = FragmentRecipesBinding.inflate(inflater, container, false)
+        val recipeDao = RecipeDatabase.getDatabase(requireContext()).recipeDao()
+        val repository = RecipeRepository(recipeDao)
+        val viewModelFactory = RecipeListViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelFactory)[RecipeListViewModel::class.java]
         context?.let {
             viewModel.fetchRecipesFromJson(it)
         }

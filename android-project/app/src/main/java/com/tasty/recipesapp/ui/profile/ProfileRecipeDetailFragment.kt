@@ -1,4 +1,4 @@
-package com.tasty.recipesapp.ui.recipe
+package com.tasty.recipesapp.ui.profile
 
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
@@ -9,19 +9,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.tasty.recipesapp.R
-import com.tasty.recipesapp.databinding.FragmentRecipeDetailBinding
+import com.tasty.recipesapp.databinding.FragmentProfileRecipeDetailBinding
 import com.tasty.recipesapp.models.RecipeDatabase
 import com.tasty.recipesapp.models.RecipeModel
 import com.tasty.recipesapp.models.RecipeRepository
+import com.tasty.recipesapp.ui.profile.viewmodel.ProfileRecipeDetailViewModel
 import com.tasty.recipesapp.ui.recipe.factory.RecipeDetailViewModelFactory
-import com.tasty.recipesapp.ui.recipe.viewmodel.RecipeDetailViewModel
+import kotlinx.coroutines.launch
 
-class RecipeDetailFragment : Fragment() {
+class ProfileRecipeDetailFragment : Fragment() {
 
-    private lateinit var binding: FragmentRecipeDetailBinding
-    private lateinit var viewModel: RecipeDetailViewModel
+    private lateinit var binding: FragmentProfileRecipeDetailBinding
+    private lateinit var viewModel: ProfileRecipeDetailViewModel
     private var currentVideoPosition: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +36,7 @@ class RecipeDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentRecipeDetailBinding.inflate(inflater, container, false)
+        binding = FragmentProfileRecipeDetailBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -46,7 +49,7 @@ class RecipeDetailFragment : Fragment() {
         binding.frameLayout.layoutParams.height = imageHeight
         binding.frameLayout.requestLayout()
 
-        val recipeId = arguments?.getInt(RecipesFragment.BUNDLE_EXTRA_SELECTED_RECIPE_ID)
+        val recipeId = arguments?.getInt(ProfileFragment.BUNDLE_EXTRA_SELECTED_RECIPE_ID)
         Log.d(TAG, "Selected recipe id: $recipeId")
 
         val database = RecipeDatabase.getDatabase(requireContext())
@@ -54,16 +57,32 @@ class RecipeDetailFragment : Fragment() {
         repository.initialize(requireContext())
 
         val factory = RecipeDetailViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, factory)[RecipeDetailViewModel::class.java]
+        viewModel = ViewModelProvider(this, factory)[ProfileRecipeDetailViewModel::class.java]
 
-        recipeId?.let { viewModel.fetchRecipeDetails(recipeId) }
-        viewModel.recipe.observe(viewLifecycleOwner) { recipe ->
-            if (recipe != null) {
-                updateViews(recipe)
+        recipeId?.let { fetchFromDatabase(it) }
+
+        binding.deleteButton.setOnClickListener {
+            lifecycleScope.launch {
+                if (recipeId != null) {
+                    viewModel.deleteFromDB(recipeId.toLong())
+                }
             }
-
+            findNavController().navigate(R.id.action_profileRecipeDetailFragment_to_profileFragment)
         }
 
+    }
+
+    private fun fetchFromDatabase(recipeId: Int) {
+        lifecycleScope.launch {
+            viewModel.fetchRecipeDetailsFromDB(recipeId.toLong())
+            viewModel.recipe.observe(viewLifecycleOwner) { dbRecipe ->
+                if (dbRecipe != null) {
+                    updateViews(dbRecipe)
+                } else {
+                    Log.e(TAG, "Recipe details not found in DB either")
+                }
+            }
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -73,7 +92,7 @@ class RecipeDetailFragment : Fragment() {
         binding.recipeDetailServingsView.text = "Number of servings: ${recipeModel.numServings}"
         binding.recipeDetailCountryView.text = "Country of origin: ${recipeModel.country}"
         val componentsText = recipeModel.components
-                .sortedBy { it.position }
+            .sortedBy { it.position }
             .joinToString("\n") { "${it.position}. ${it.rawText}" }
         val instructionsText = recipeModel.instructions
             .sortedBy { it.position }

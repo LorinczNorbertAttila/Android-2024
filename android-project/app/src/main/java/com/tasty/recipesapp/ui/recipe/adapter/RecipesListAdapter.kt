@@ -36,6 +36,8 @@ class RecipesListAdapter (
             .load(recipe.thumbnailUrl)
             .placeholder(R.drawable.ic_launcher_background)
             .into(holder.recipeImageView)
+
+        holder.blurView.setupWith(holder.root).setBlurRadius(10f)
     }
 
     inner class RecipeItemViewHolder(binding: RecipeListItemBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -44,6 +46,8 @@ class RecipesListAdapter (
         val recipeDescriptionView: TextView = binding.recipeDescriptionView
         val recipeKeywordView: TextView = binding.recipeKeywordsView
         val recipeImageView: ImageView = binding.recipeImageView
+        val blurView: eightbitlab.com.blurview.BlurView = binding.blurView
+        val root = binding.root
 
         init {
             binding.root.setOnClickListener {

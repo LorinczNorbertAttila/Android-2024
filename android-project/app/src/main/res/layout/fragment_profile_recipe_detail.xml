@@ -129,6 +129,18 @@
                             android:textSize="16sp"
                             android:textColor="#555555"
                             android:layout_marginBottom="16dp" />
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:contentDescription="@string/delete_item"
+                            android:src="@android:drawable/ic_menu_delete"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/green"
+                            app:useCompatPadding="true"
+                            app:elevation="4dp"
+                            android:clickable="true"
+                            android:layout_gravity="end"
+                            android:id="@+id/deleteButton" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

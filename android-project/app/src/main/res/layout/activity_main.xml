@@ -17,14 +17,17 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:defaultNavHost="true"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="60dp"
             app:navGraph="@navigation/nav_graph"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation_view"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:layout_alignParentBottom="true"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/lime_green"
+            app:itemTextColor="@android:color/transparent"
+            app:itemActiveIndicatorStyle="@style/Custom.Indicator"
             app:menu="@menu/app_menu"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

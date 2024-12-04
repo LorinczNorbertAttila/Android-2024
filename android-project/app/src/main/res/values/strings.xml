@@ -13,4 +13,22 @@
     <string name="hello_profile_fragment">Hello profile fragment</string>
     <string name="hello_recipe_detail_fragment">Hello recipe detail fragment</string>
     <string name="hello_recipe_fragment">Hello recipe fragment</string>
+    <string name="add_recpe">Add recpe</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="keywords">Keywords</string>
+    <string name="thumbnail_url">Thumbnail URL</string>
+    <string name="save_recipe">Save recipe</string>
+    <string name="recipeimage">RecipeImage</string>
+    <string name="detail_image">Detail Image</string>
+    <string name="recipe_image">Recipe Image</string>
+    <string name="add_a_new_recipe">Add a new recipe</string>
+    <string name="components">Components:</string>
+    <string name="instructions">Instructions:</string>
+    <string name="number_of_servings">Number of servings</string>
+    <string name="country_of_origin">Country of origin</string>
+    <string name="component">Components</string>
+    <string name="instruction">Instructions</string>
+    <string name="original_video_url">Original Video URL</string>
+    <string name="delete_item">Delete item</string>
 </resources>

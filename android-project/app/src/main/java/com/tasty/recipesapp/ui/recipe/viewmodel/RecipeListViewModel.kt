@@ -6,10 +6,9 @@ import androidx.lifecycle.ViewModel
 import com.tasty.recipesapp.models.RecipeModel
 import com.tasty.recipesapp.models.RecipeRepository
 
-class RecipeListViewModel() : ViewModel() {
+class RecipeListViewModel(private val repository: RecipeRepository) : ViewModel() {
     var recipesList : MutableLiveData<List<RecipeModel>> = MutableLiveData()
 
-    private val repository: RecipeRepository = RecipeRepository()
 
     fun fetchRecipesFromJson(context: Context) {
         val recipes = repository.getRecipesFromJson(context)

@@ -3,6 +3,7 @@ package com.tasty.recipesapp.ui.recipe.factory
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.tasty.recipesapp.models.RecipeRepository
+import com.tasty.recipesapp.ui.profile.viewmodel.ProfileRecipeDetailViewModel
 import com.tasty.recipesapp.ui.recipe.viewmodel.RecipeDetailViewModel
 
 class RecipeDetailViewModelFactory(private val repository: RecipeRepository) : ViewModelProvider.Factory {
@@ -10,6 +11,9 @@ class RecipeDetailViewModelFactory(private val repository: RecipeRepository) : V
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(RecipeDetailViewModel::class.java)) {
             return RecipeDetailViewModel(repository) as T
+        }
+        if (modelClass.isAssignableFrom(ProfileRecipeDetailViewModel::class.java)) {
+            return ProfileRecipeDetailViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
